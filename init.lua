@@ -30,5 +30,6 @@ vim.api.nvim_set_keymap('n', '<leader>ex', ':Ex<cr>', { noremap = true })
 
 -- open terminal below all splits
 vim.api.nvim_set_keymap('n', '<leader>to', ':sp<CR>:bo term<CR>i', { noremap = true })
+
 -- load old config till all is ported to lua
 vim.cmd('source ~/.config/nvim/old.vim')
