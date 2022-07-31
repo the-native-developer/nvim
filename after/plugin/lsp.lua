@@ -42,7 +42,27 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'html', 'cssls', 'cssmodules_ls', 'emmet_ls','graphql', 'bashls', 'phan', 'phpactor', 'intelephense', 'golangci_lint_ls', 'gopls', 'sumneko_lua'}
+local servers = {
+    'clangd',
+    'rust_analyzer',
+    'pyright',
+    'tsserver',
+    'html',
+    'cssls',
+    'cssmodules_ls',
+    'emmet_ls',
+    'graphql',
+    'bashls',
+    'phan',
+    'phpactor',
+    'intelephense',
+    'golangci_lint_ls',
+    'gopls',
+    'sumneko_lua',
+    'jsonls',
+    'yamlls',
+}
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -94,7 +114,7 @@ cmp.setup {
   },
 }
 
-require('lspconfig')['rust_analyzer'].setup{
+require('lspconfig')['rust_analyzer'].setup {
     -- Server-specific settings...
     settings = {
       ["rust-analyzer"] = {}
