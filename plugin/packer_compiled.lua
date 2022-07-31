@@ -154,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["phpactor.nvim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/phpactor.nvim",
+    url = "https://github.com/gbprod/phpactor.nvim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/plenary.nvim",

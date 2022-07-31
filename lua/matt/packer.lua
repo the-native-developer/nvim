@@ -60,6 +60,12 @@ return require('packer').startup(function()
         requires = {'neovim/nvim-lspconfig', 'euclidianAce/BetterLua.vim'}
     }
 
+    -- Phpactor
+    use({
+      "gbprod/phpactor.nvim",
+      -- run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
+    })
+
     -- language server
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin

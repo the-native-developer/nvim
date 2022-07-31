@@ -53,6 +53,7 @@ local servers = {
     'emmet_ls',
     'graphql',
     'bashls',
+    'psalm',
     'phan',
     'phpactor',
     'intelephense',
