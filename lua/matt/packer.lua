@@ -9,6 +9,10 @@ return require('packer').startup(function()
 
     -- Color theme plugins
     use {'dracula/vim', as =  'dracula' }
+    use 'morhetz/gruvbox'
+    use 'altercation/vim-colors-solarized'
+    use 'ayu-theme/ayu-vim'
+    use 'andbar-ru/vim-unicon'
 
     -- NerdTree
     use { 'preservim/nerdtree',

@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
+  ["ayu-vim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/ayu-vim",
+    url = "https://github.com/ayu-theme/ayu-vim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -103,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
   },
   ["html5.vim"] = {
     loaded = true,
@@ -184,6 +194,11 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vdebug",
     url = "https://github.com/vim-vdebug/vdebug"
   },
+  ["vim-colors-solarized"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-colors-solarized",
+    url = "https://github.com/altercation/vim-colors-solarized"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-commentary",
@@ -248,6 +263,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-twig",
     url = "https://github.com/lumiliet/vim-twig"
+  },
+  ["vim-unicon"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-unicon",
+    url = "https://github.com/andbar-ru/vim-unicon"
   }
 }
 

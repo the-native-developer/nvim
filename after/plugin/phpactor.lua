@@ -3,7 +3,7 @@ require("phpactor").setup({
         path = "/usr/bin/",
         branch = "main",
         bin = "/usr/bin/phpactor",
-        php_bin = "php",
+        php_bin = "php7",
         composer_bin = "composer",
         git_bin = "git",
         check_on_startup = "none",
