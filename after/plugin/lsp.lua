@@ -56,7 +56,7 @@ local servers = {
     'psalm',
     'phan',
     'phpactor',
-    'intelephense',
+    -- 'intelephense',
     'golangci_lint_ls',
     'gopls',
     'sumneko_lua',
@@ -115,7 +115,26 @@ cmp.setup {
   },
 }
 
-require('lspconfig')['rust_analyzer'].setup {
+-- lspconfig['intelephense'].setup{
+--   capabilities = capabilities, -- from the local capabilities variable in the above snippet
+--   init_options = {
+--     licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
+--   },
+--   settings = {
+--     intelephense = {
+--       telemetry = {
+--         enabled = false,
+--       },
+--       completion = {
+--         fullyQualifyGlobalConstantsAndFunctions = false
+--       },
+--       phpdoc = {
+--         returnVoid = false,
+--       }
+--     },
+--   }
+-- }
+lspconfig['rust_analyzer'].setup {
     -- Server-specific settings...
     settings = {
       ["rust-analyzer"] = {}
