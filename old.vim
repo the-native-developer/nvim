@@ -1,4 +1,5 @@
-" syntax highliting for jsdoc
+" VIM-JAVASCRIPT
+"" syntax highliting for jsdoc
 let g:javascript_plugin_jsdoc = 1
 
 augroup javascript_folding
@@ -18,6 +19,7 @@ let g:javascript_conceal_super          = "Ω"
 let g:javascript_conceal_arrow_function = "⇒"
 set conceallevel=1
 
+" GENERAL
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
@@ -25,6 +27,6 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 au FileType javascript setlocal formatprg=prettier
 au FileType javascript.jsx setlocal formatprg=prettier
 au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-au FileType html setlocal formatprg=js-beautify\ --type\ html
 au FileType scss setlocal formatprg=prettier\ --parser\ css
 au FileType css setlocal formatprg=prettier\ --parser\ css
+au FileType html setlocal formatprg=js-beautify\ --type\ html
