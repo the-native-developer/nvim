@@ -114,7 +114,21 @@ cmp.setup {
   },
 }
 
-lspconfig['intelephense'].setup{
+lspconfig['phpactor'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities, -- from the local capabilities variable in the above snippet
+    init_options = {
+        ["language_server_phpstan.enabled"] = true,
+        ["language_server_psalm.enabled"] = true,
+    }
+}
+
+lspconfig['sqlls'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities, -- from the local capabilities variable in the above snippet
+}
+
+lspconfig['intelephense'].setup {
   on_attach = on_attach,
   capabilities = capabilities, -- from the local capabilities variable in the above snippet
   init_options = {
@@ -134,6 +148,7 @@ lspconfig['intelephense'].setup{
     },
   }
 }
+
 lspconfig['rust_analyzer'].setup {
     -- Server-specific settings...
     settings = {
