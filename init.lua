@@ -1,9 +1,7 @@
 require('matt')
 
+vim.g['python3_host_prog'] = '/bin/python3'
 vim.g['ruby_host_prog'] = '/home/mlueer/.local/share/gem/ruby/3.0.0/bin/neovim-ruby-host'
-
-vim.g['powerline_pycmd'] = 'py3'
-vim.g['powerline_loaded'] = 1
 
 vim.g.mapleader = ' '
 
