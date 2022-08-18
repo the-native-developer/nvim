@@ -56,8 +56,17 @@ return require('packer').startup(function()
     -- Test suite
     use 'vim-test/vim-test'
 
-    -- vdebug 
-    use 'vim-vdebug/vdebug'
+    -- debugging 
+    use {
+        'mfussenegger/nvim-dap',
+        requires = {
+            'rcarriga/nvim-dap-ui',
+            'theHamsta/nvim-dap-virtual-text',
+            'nvim-telescope/telescope-dap.nvim',
+            'go-delve/delve',
+            'leoluz/nvim-dap-go',
+        }
+    }
 
     -- cs fixer
     use 'stephpy/vim-php-cs-fixer'
