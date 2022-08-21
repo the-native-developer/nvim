@@ -14,6 +14,29 @@ require('nvim-dap-virtual-text').setup()
 
 require('dap-go').setup()
 
+dap.adapters.php = {
+    type = 'executable',
+    command = 'node',
+    args = { '/home/mlueer/sources/vscode-php-debug/out/phpDebug.js' },
+}
+
+dap.configurations.php = {
+    {
+        type = 'php',
+        request = 'launch',
+        name = 'Listen for Xdebug',
+        port = 9000
+    },
+    {
+        name = 'Debug Current Script',
+        type = 'php',
+        port = 9003,
+        cwd = "${fileDirname}",
+        program = "${file}",
+        runtimeExecutable = "php -dxdebug.mode=debug",
+    },
+}
+
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
