@@ -19,6 +19,9 @@ let g:javascript_conceal_super          = "Ω"
 let g:javascript_conceal_arrow_function = "⇒"
 set conceallevel=1
 
+" Eslint lsp
+autocmd BufWritePre *.{js,jsx,ts,tsx} EslintFixAll
+
 " GENERAL
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear

@@ -51,6 +51,7 @@ local servers = {
     'cssls',
     'cssmodules_ls',
     'emmet_ls',
+    'eslint',
     'graphql',
     'bashls',
     'psalm',
