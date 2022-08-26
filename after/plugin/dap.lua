@@ -22,12 +22,19 @@ dap.adapters.php = {
 
 dap.configurations.php = {
     {
+        name = 'Listen for Xdebug',
         type = 'php',
         request = 'launch',
-        name = 'Listen for Xdebug',
-        port = 9000
-    },
-    {
+        port = 9000,
+        proxy = {
+            -- enable = true,
+            port = 9009,
+            key = 'PHPSTORM'
+        },
+        pathMappings = {
+            {"/var/www/html", "${workspaceFolder}/"}
+        },
+    }, {
         name = 'Debug Current Script',
         type = 'php',
         port = 9003,
