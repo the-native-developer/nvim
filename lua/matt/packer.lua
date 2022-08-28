@@ -33,10 +33,17 @@ return require('packer').startup(function()
 
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
-      requires = { 
+      requires = {
           {'nvim-lua/plenary.nvim'},
           {'nvim-telescope/telescope-ui-select.nvim' }
       }
+    }
+
+    use {
+        'glepnir/dashboard-nvim',
+        requires = {
+           'nvim-telescope/telescope.nvim'
+        }
     }
 
     -- fugative
@@ -72,9 +79,9 @@ return require('packer').startup(function()
     -- cs fixer
     use 'stephpy/vim-php-cs-fixer'
 
-    -- Lua 
+    -- Lua lsp
     use { 'tjdevries/nlua.nvim',
-        requires = {'neovim/nvim-lspconfig', 'euclidianAce/BetterLua.vim'}
+        requires = {'neovim/nvim-lspconfig', 'nvim-lua/completion-nvim', 'euclidianAce/BetterLua.vim'}
     }
 
     -- Phpactor
@@ -106,6 +113,9 @@ return require('packer').startup(function()
 
     -- Go dev plugins
     use {'fatih/vim-go', run = ':GoUpdateBinaries' }
+
+    -- my plugins
+    -- use '/home/mlueer/projects/nvim/plugins/stackmap.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
