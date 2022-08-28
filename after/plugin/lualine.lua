@@ -9,7 +9,7 @@ require('lualine').setup {
       winbar = {},
     },
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -33,7 +33,22 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
-  inactive_winbar = {},
+  -- this feature comes with nvim 0.8
+  winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {'diagnostics'},
+    lualine_z = {'filename'}
+  },
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {'diagnostics'},
+    lualine_z = {'filename'}
+  },
   extensions = {}
 }
