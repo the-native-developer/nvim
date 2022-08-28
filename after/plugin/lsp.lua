@@ -59,7 +59,6 @@ local servers = {
     'phpactor',
     'golangci_lint_ls',
     'gopls',
-    'sumneko_lua',
     'jsonls',
     'yamlls',
 }
@@ -156,6 +155,16 @@ lspconfig['rust_analyzer'].setup {
       ["rust-analyzer"] = {}
     }
 }
+
+-- require('nlua.lsp.nvim').setup(require('lspconfig'), {
+--   on_attach = on_attach,
+
+--   -- Include globals you want to tell the LSP are real :)
+--   globals = {
+--     -- Colorbuddy
+--     "Color", "c", "Group", "g", "s",
+--   }
+-- })
 
 lspconfig['sumneko_lua'].setup {
   settings = {

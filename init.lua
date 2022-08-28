@@ -23,11 +23,14 @@ vim.api.nvim_set_keymap('v', '<Left>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<Right>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<Up>', '<Nop>', { noremap = true })
 
+-- open netrw
+vim.api.nvim_set_keymap('n', '<leader>ex', '<cmd>Ex<cr>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>ex', ':Ex<cr>', { noremap = true })
+-- source current file
+vim.api.nvim_set_keymap('n', '<leader><leader>x', '<cmd>source %<cr>', { noremap = true })
 
 -- open terminal below all splits
-vim.api.nvim_set_keymap('n', '<leader>to', ':sp<CR>:bo term<CR>i', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>to', '<cmd>sp<CR><cmd>bo term<CR>i', { noremap = true })
 
 -- load old config till all is ported to lua
 vim.cmd('source ~/.config/nvim/old.vim')
