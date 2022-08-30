@@ -214,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["stackmap.nvim"] = {
-    loaded = true,
-    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/stackmap.nvim",
-    url = "/home/mlueer/projects/nvim/plugins/stackmap.nvim"
-  },
   ["telescope-dap.nvim"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
