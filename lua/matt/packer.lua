@@ -22,8 +22,11 @@ return require('packer').startup(function()
     -- auto pairs
     use 'jiangmiao/auto-pairs'
 
-    -- NerdCommenter
+    -- vim commentary
     use 'tpope/vim-commentary'
+
+    -- nvim colorizer
+    use 'norcalli/nvim-colorizer.lua'
 
     use {
         'nvim-treesitter/nvim-treesitter',
