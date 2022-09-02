@@ -45,6 +45,7 @@ local lspconfig = require('lspconfig')
 local servers = {
     'clangd',
     'rust_analyzer',
+    'pylsp',
     'pyright',
     'tsserver',
     'html',
@@ -113,7 +114,14 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
+lspconfig['jsonls'].setup {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
 lspconfig['phpactor'].setup{
     on_attach = on_attach,
     capabilities = capabilities, -- from the local capabilities variable in the above snippet

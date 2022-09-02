@@ -209,10 +209,20 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/phpactor.nvim",
     url = "https://github.com/gbprod/phpactor.nvim"
   },
+  ["phpunit.nvim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/phpunit.nvim",
+    url = "/home/mlueer/projects/nvim/plugins/phpunit.nvim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["schemastore.nvim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
+    url = "https://github.com/b0o/schemastore.nvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,

@@ -114,8 +114,12 @@ return require('packer').startup(function()
     -- Go dev plugins
     use {'fatih/vim-go', run = ':GoUpdateBinaries' }
 
+    -- schemastore json
+    use "b0o/schemastore.nvim"
+
     -- my plugins
     -- use '/home/mlueer/projects/nvim/plugins/stackmap.nvim'
+    use '/home/mlueer/projects/nvim/plugins/phpunit.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
