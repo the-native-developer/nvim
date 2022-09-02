@@ -2,7 +2,7 @@ local path = vim.fn.getcwd()
 local apiPath = '/home/mlueer/projects/vdp-api'
 
 if path == apiPath then
-    vim.g['test#php#phpunit#executable'] = 'docker-compose exec -T api vendor/bin/phpunit --bootstrap tests/bootstrap.php -c tests/phpunit.xml '
+    vim.g['test#php#phpunit#executable'] = 'bin/api test --no-coverage'
 else
     vim.g['test#php#phpunit#executable'] = 'docker-compose exec -T php vendor/bin/phpunit --bootstrap tests/bootstrap.php -c tests/phpunit.xml '
 end
