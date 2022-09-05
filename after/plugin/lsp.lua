@@ -9,12 +9,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- client.server_capabilities.renameProvider = false
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -29,7 +30,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
@@ -45,7 +46,6 @@ local lspconfig = require('lspconfig')
 local servers = {
     'clangd',
     'rust_analyzer',
-    'pylsp',
     'pyright',
     'tsserver',
     'html',
@@ -55,9 +55,9 @@ local servers = {
     'eslint',
     'graphql',
     'bashls',
-    'psalm',
-    'phan',
-    'phpactor',
+    -- 'psalm',
+    -- 'phan',
+    -- 'phpactor',
     'golangci_lint_ls',
     'gopls',
     'jsonls',
@@ -122,14 +122,14 @@ lspconfig['jsonls'].setup {
     },
   },
 }
-lspconfig['phpactor'].setup{
-    on_attach = on_attach,
-    capabilities = capabilities, -- from the local capabilities variable in the above snippet
-    init_options = {
-        ["language_server_phpstan.enabled"] = true,
-        ["language_server_psalm.enabled"] = true,
-    }
-}
+-- lspconfig['phpactor'].setup{
+--     on_attach = on_attach,
+--     capabilities = capabilities, -- from the local capabilities variable in the above snippet
+--     init_options = {
+--         ["language_server_phpstan.enabled"] = true,
+--         ["language_server_psalm.enabled"] = true,
+--     }
+-- }
 
 lspconfig['sqlls'].setup {
     on_attach = on_attach,
@@ -139,9 +139,9 @@ lspconfig['sqlls'].setup {
 lspconfig['intelephense'].setup {
   on_attach = on_attach,
   capabilities = capabilities, -- from the local capabilities variable in the above snippet
-  init_options = {
-    licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
-  },
+  -- init_options = {
+  --   licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
+  -- },
   settings = {
     intelephense = {
       telemetry = {
