@@ -31,7 +31,10 @@ return require('packer').startup(function()
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-        requires = {'nvim-treesitter/nvim-treesitter-textobjects'}
+        requires = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/nvim-treesitter-context'
+        }
     }
 
     use {
@@ -88,15 +91,6 @@ return require('packer').startup(function()
         requires = {'neovim/nvim-lspconfig', 'nvim-lua/completion-nvim', 'euclidianAce/BetterLua.vim'}
     }
 
-    -- Phpactor
-    -- use({
-    --     "gbprod/phpactor.nvim",
-    --     run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-    --     requires = {
-    --         "nvim-lua/plenary.nvim", -- required to update phpactor
-    --         "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
-    --     },
-    -- })
 
     -- language server
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
@@ -121,9 +115,20 @@ return require('packer').startup(function()
     -- schemastore json
     use "b0o/schemastore.nvim"
 
+    -- Phpactor
+    use ({
+      "gbprod/phpactor.nvim",
+      run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
+      requires = {
+        "nvim-lua/plenary.nvim", -- required to update phpactor
+        "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
+      },
+    })
+
+    ----------------------------------------------------------------------------------------------
     -- my plugins
     -- use '/home/mlueer/projects/nvim/plugins/stackmap.nvim'
-    use '/home/mlueer/projects/nvim/plugins/phpunit.nvim'
+    -- use '/home/mlueer/projects/nvim/plugins/phpunit.nvim'
 
     if packer_bootstrap then
         require('packer').sync()

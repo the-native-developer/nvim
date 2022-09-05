@@ -57,7 +57,6 @@ local servers = {
     'bashls',
     -- 'psalm',
     -- 'phan',
-    -- 'phpactor',
     'golangci_lint_ls',
     'gopls',
     'jsonls',
@@ -122,42 +121,58 @@ lspconfig['jsonls'].setup {
     },
   },
 }
--- lspconfig['phpactor'].setup{
---     on_attach = on_attach,
---     capabilities = capabilities, -- from the local capabilities variable in the above snippet
---     init_options = {
---         ["language_server_phpstan.enabled"] = true,
---         ["language_server_psalm.enabled"] = true,
---     }
--- }
 
 lspconfig['sqlls'].setup {
     on_attach = on_attach,
     capabilities = capabilities, -- from the local capabilities variable in the above snippet
 }
 
+lspconfig['phpactor'].setup{
+    on_attach = function(client, bufnr)
+      -- client.server_capabilities.renameProvider = false
+      -- Enable completion triggered by <c-x><c-o>
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { silent=true, buffer=bufnr }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, bufopts)
+      vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
+      vim.keymap.set('n', '<leader>pt', '<cmd>PhpActor transform<CR>', bufopts)
+      vim.keymap.set('n', '<leader>pc', '<cmd>PhpActor context_menu<CR>', bufopts)
+      vim.keymap.set('n', '<leader>pga', '<cmd>PhpActor generate_accessor<CR>', bufopts)
+      vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
+    end,
+    capabilities = capabilities, -- from the local capabilities variable in the above snippet
+    init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = true,
+    }
+}
+
 lspconfig['intelephense'].setup {
   on_attach = on_attach,
   capabilities = capabilities, -- from the local capabilities variable in the above snippet
-  -- init_options = {
-  --   licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
-  -- },
-  settings = {
-    intelephense = {
-      telemetry = {
-        enabled = false,
-      },
-      completion = {
-        fullyQualifyGlobalConstantsAndFunctions = false
-      },
-      phpdoc = {
-        returnVoid = false,
-      }
-    },
-  }
+  init_options = {
+    licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
+  },
 }
 
 lspconfig['rust_analyzer'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities, -- from the local capabilities variable in the above snippet
     -- Server-specific settings...
     settings = {
       ["rust-analyzer"] = {}

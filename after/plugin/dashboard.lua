@@ -1,10 +1,10 @@
 local home = os.getenv('HOME')
 local db = require('dashboard')
 
-db.preview_command = 'ueberzug'
-db.preview_file_path = home .. '/.config/nvim/static/neovim.cat'
-db.preview_file_height = 11
-db.preview_file_width = 70
+-- db.preview_command = 'ueberzug'
+-- db.preview_file_path = home .. '/.config/nvim/static/neovim.cat'
+-- db.preview_file_height = 11
+-- db.preview_file_width = 70
 
 db.default_executive = 'telescope'
 db.custom_header = {
