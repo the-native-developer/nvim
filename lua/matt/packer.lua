@@ -76,6 +76,7 @@ return require('packer').startup(function()
             'nvim-telescope/telescope-dap.nvim',
             'go-delve/delve',
             'leoluz/nvim-dap-go',
+            'mfussenegger/nvim-dap-python',
         }
     }
 
@@ -88,14 +89,14 @@ return require('packer').startup(function()
     }
 
     -- Phpactor
-    use({
-        "gbprod/phpactor.nvim",
-        run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-        requires = {
-            "nvim-lua/plenary.nvim", -- required to update phpactor
-            "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
-        },
-    })
+    -- use({
+    --     "gbprod/phpactor.nvim",
+    --     run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
+    --     requires = {
+    --         "nvim-lua/plenary.nvim", -- required to update phpactor
+    --         "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
+    --     },
+    -- })
 
     -- language server
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP

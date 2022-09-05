@@ -1,5 +1,5 @@
 
-local opt = { noremap = true }
+local opt = { noremap = true, silent = true }
 -- Common Python commands
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     pattern = {'*.py'},
