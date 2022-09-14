@@ -13,6 +13,9 @@ return require('packer').startup(function()
     use 'altercation/vim-colors-solarized'
     use 'ayu-theme/ayu-vim'
     use 'andbar-ru/vim-unicon'
+    use 'rafamadriz/neon'
+    use 'folke/tokyonight.nvim'
+    use 'savq/melange'
 
     -- NerdTree
     use { 'preservim/nerdtree',

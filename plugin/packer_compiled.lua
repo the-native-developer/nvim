@@ -144,6 +144,16 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  melange = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/melange",
+    url = "https://github.com/savq/melange"
+  },
+  neon = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/neon",
+    url = "https://github.com/rafamadriz/neon"
+  },
   nerdtree = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/nerdtree",
@@ -259,6 +269,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["typescript-vim"] = {
     loaded = true,
