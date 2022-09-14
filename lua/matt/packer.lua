@@ -83,6 +83,9 @@ return require('packer').startup(function()
         }
     }
 
+    -- rust
+    use 'simrat39/rust-tools.nvim'
+
     -- cs fixer
     use 'stephpy/vim-php-cs-fixer'
 
