@@ -250,6 +250,11 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
   ["schemastore.nvim"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/schemastore.nvim",

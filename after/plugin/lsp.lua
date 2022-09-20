@@ -45,7 +45,6 @@ local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
     'clangd',
-    'rust_analyzer',
     'pyright',
     'tsserver',
     'html',
@@ -175,7 +174,22 @@ lspconfig['rust_analyzer'].setup {
     capabilities = capabilities, -- from the local capabilities variable in the above snippet
     -- Server-specific settings...
     settings = {
-      ["rust-analyzer"] = {}
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
     }
 }
 
