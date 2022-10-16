@@ -45,6 +45,7 @@ local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
     'clangd',
+    'cmake',
     'pyright',
     'tsserver',
     'html',
