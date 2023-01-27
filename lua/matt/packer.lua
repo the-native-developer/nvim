@@ -92,9 +92,6 @@ return require('packer').startup(function()
     use 'simrat39/rust-tools.nvim'
     use 'rust-lang/rust.vim'
 
-    -- cs fixer
-    use 'stephpy/vim-php-cs-fixer'
-
     -- Lua lsp
     use { 'tjdevries/nlua.nvim',
         requires = {'neovim/nvim-lspconfig', 'nvim-lua/completion-nvim', 'euclidianAce/BetterLua.vim'}

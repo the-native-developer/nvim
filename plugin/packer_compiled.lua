@@ -330,11 +330,6 @@ _G.packer_plugins = {
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-jsx-typescript",
     url = "https://github.com/peitalin/vim-jsx-typescript"
   },
-  ["vim-php-cs-fixer"] = {
-    loaded = true,
-    path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-php-cs-fixer",
-    url = "https://github.com/stephpy/vim-php-cs-fixer"
-  },
   ["vim-styled-components"] = {
     loaded = true,
     path = "/home/mlueer/.local/share/nvim/site/pack/packer/start/vim-styled-components",
