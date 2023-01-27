@@ -4,7 +4,7 @@
             path = "/usr/bin/",
             branch = "main",
             bin = "/usr/bin/phpactor",
-            php_bin = "php7",
+            php_bin = "php",
             composer_bin = "composer",
             git_bin = "git",
             check_on_startup = "always",
