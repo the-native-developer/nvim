@@ -55,14 +55,9 @@ dap.configurations.php = {
         name = 'Listen for Xdebug',
         type = 'php',
         request = 'launch',
-        port = 9000,
-        proxy = {
-            -- enable = true,
-            port = 9009,
-            key = 'PHPSTORM'
-        },
+        port = 9009,
         pathMappings = {
-            {"/var/www/html", "${workspaceFolder}/"}
+            ['/var/www/html/'] = "${workspaceFolder}",
         },
     }, {
         name = 'Debug Current Script',
