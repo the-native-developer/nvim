@@ -1,9 +1,30 @@
-require('matt')
+require('matt.packer')
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.wo.colorcolumn='100' -- highlight column after 'textwidth'
+
+PT = function (table)
+    print(vim.inspect(table))
+end
+
+vim.g.mapleader = ' '
 
 vim.g['python3_host_prog'] = '/bin/python3'
 vim.g['ruby_host_prog'] = '/home/mlueer/.local/share/gem/ruby/3.0.0/bin/neovim-ruby-host'
-
-vim.g.mapleader = ' '
 
 -- Remove newbie crutches in Insert Mode
 vim.api.nvim_set_keymap('i', '<Down>', '<Nop>', { noremap = true })
