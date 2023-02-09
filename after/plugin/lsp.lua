@@ -57,8 +57,8 @@ local servers = {
     'bashls',
     -- 'psalm',
     -- 'phan',
-    'golangci_lint_ls',
     'gopls',
+    'golangci_lint_ls',
     'jsonls',
     'yamlls',
 }
