@@ -1,4 +1,17 @@
-return require('packer').startup(function()
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+return require('packer').startup(function(use)
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -17,11 +30,6 @@ return require('packer').startup(function()
     use 'folke/tokyonight.nvim'
     use 'savq/melange'
 
-    -- NerdTree
-    use { 'preservim/nerdtree',
-      requires = {'Xuyuanp/nerdtree-git-plugin', 'ryanoasis/vim-devicons'}
-    }
-
     -- auto pairs
     use 'jiangmiao/auto-pairs'
 
@@ -33,9 +41,7 @@ return require('packer').startup(function()
 
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            require('nvim-treesitter.install').update({ with_sync = true })
-        end,
+        run = ':TSUpdate',
         requires = {
             'nvim-treesitter/nvim-treesitter-textobjects',
             'nvim-treesitter/nvim-treesitter-context'
@@ -52,9 +58,39 @@ return require('packer').startup(function()
 
     use {
         'glepnir/dashboard-nvim',
-        requires = {
-           'nvim-telescope/telescope.nvim'
-        }
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup({
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    shortcut = {
+                        { desc = ' Update', group = '@property', action = 'Lazy update', key = 'u' },
+                        {
+                            desc = ' Files',
+                            group = 'Label',
+                            action = 'Telescope find_files',
+                            key = 'f',
+                        },
+                        {
+                            desc = ' Apps',
+                            group = 'DiagnosticHint',
+                            action = 'Telescope app',
+                            key = 'a',
+                        },
+                        {
+                            desc = ' dotfiles',
+                            group = 'Number',
+                            action = 'Telescope dotfiles',
+                            key = 'd',
+                        },
+                    },
+                },
+            })
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
     }
 
     -- fugative
@@ -96,7 +132,6 @@ return require('packer').startup(function()
     use { 'tjdevries/nlua.nvim',
         requires = {'neovim/nvim-lspconfig', 'nvim-lua/completion-nvim', 'euclidianAce/BetterLua.vim'}
     }
-
 
     -- language server
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
