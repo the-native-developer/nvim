@@ -10,5 +10,5 @@ vim.o.termguicolors = true
 -- vim.g.neon_italic_function = true
 -- vim.g.neon_transparent = false
 
-vim.cmd[[colorscheme tokyonight-day]]
-vim.cmd[[:hi ColorColumn ctermbg=LightBlue guibg=LightBlue]]
+vim.cmd.colorscheme('tokyonight-day')
+vim.api.nvim_set_hl(0, 'ColorColumn', {bg='LightBlue'})
