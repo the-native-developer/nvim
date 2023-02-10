@@ -56,6 +56,8 @@ return require('packer').startup(function(use)
       }
     }
 
+    use 'mbbill/undotree'
+
     -- fugative
     use 'tpope/vim-fugitive'
 
