@@ -2,10 +2,10 @@
 "" syntax highliting for jsdoc
 let g:javascript_plugin_jsdoc = 1
 
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
+" augroup javascript_folding
+"     au!
+"     au FileType javascript setlocal foldmethod=syntax
+" augroup END
 
 let g:javascript_conceal_function       = "ƒ"
 let g:javascript_conceal_null           = "ø"
