@@ -10,3 +10,9 @@ au FileType vue setlocal formatprg=prettier\ --parser\ vue
 au FileType scss setlocal formatprg=prettier\ --parser\ css
 au FileType css setlocal formatprg=prettier\ --parser\ css
 au FileType html setlocal formatprg=js-beautify\ --type\ html
+
+" TREESITTER
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                     " Disable folding at startup.
+
