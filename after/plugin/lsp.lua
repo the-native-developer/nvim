@@ -18,8 +18,7 @@ local servers = {
     'cssmodules_ls',
     'emmet_ls',
     'eslint',
-    'vtsls',
-    'vuels',
+    'volar',
     'phpactor',
     'intelephense',
     'psalm',
@@ -30,7 +29,7 @@ local servers = {
     'rust_analyzer',
     'jsonls',
     'yamlls',
-    'lua_ls',
+    -- 'lua_ls',
     'sqls',
     'sqlls',
 }

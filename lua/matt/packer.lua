@@ -131,6 +131,7 @@ return require('packer').startup(function(use)
 
     use 'pangloss/vim-javascript'
     use 'leafgarland/typescript-vim'
+    use 'leafoftree/vim-vue-plugin'
     use 'peitalin/vim-jsx-typescript'
     use { 'styled-components/vim-styled-components', branch = 'main' }
 
