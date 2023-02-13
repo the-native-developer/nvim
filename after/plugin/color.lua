@@ -1,7 +1,6 @@
 vim.opt.syntax = 'on'
-
--- vim.opt.background= 'light'
 vim.o.termguicolors = true
+-- vim.opt.background= 'light'
 -- vim.cmd 'let ayucolor="light"' -- light mode ayu theme
 
 -- neon scheme
