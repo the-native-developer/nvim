@@ -16,7 +16,6 @@ require'nvim-treesitter.configs'.setup {
       "go",
       "gomod",
       "json",
-      "css",
       "scss",
       "sql",
       "graphql",
@@ -68,6 +67,12 @@ require'nvim-treesitter.configs'.setup {
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+        ["ap"] = "@parameter.outer",
+        ["ip"] = "@parameter.inner",
+        ["ai"] = "@conditional.outer",
+        ["ii"] = "@conditional.inner",
       },
       -- You can choose the select mode (default is charwise 'v')
       selection_modes = {
