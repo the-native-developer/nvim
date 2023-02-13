@@ -40,7 +40,7 @@ lsp.ensure_installed(servers)
 ---- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    local bufopts = { silent=true, buffer=bufnr, remap=false }
+    local bufopts = { silent = true, buffer = bufnr, remap = false }
 
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -59,7 +59,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
@@ -70,13 +70,13 @@ end
 
 lsp.on_attach(on_attach)
 
-lsp.configure('jsonls',  {
-  settings = {
-    json = {
-      schemas = require('schemastore').json.schemas(),
-      validate = { enable = true },
+lsp.configure('jsonls', {
+    settings = {
+        json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+        },
     },
-  },
 })
 
 lsp.configure('intelephense', {
@@ -87,13 +87,12 @@ lsp.configure('intelephense', {
 
 lsp.configure('phpactor', {
     on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-
-      local bufopts = { silent=true, buffer=bufnr, remap=false }
-      vim.keymap.set('n', '<leader>pt', '<cmd>PhpActor transform<CR>', bufopts)
-      vim.keymap.set('n', '<leader>pc', '<cmd>PhpActor context_menu<CR>', bufopts)
-      vim.keymap.set('n', '<leader>pga', '<cmd>PhpActor generate_accessor<CR>', bufopts)
-      vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
+        on_attach(client, bufnr)
+        local bufopts = { silent = true, buffer = bufnr, remap = false }
+        vim.keymap.set('n', '<leader>pt', '<cmd>PhpActor transform<CR>', bufopts)
+        vim.keymap.set('n', '<leader>pc', '<cmd>PhpActor context_menu<CR>', bufopts)
+        vim.keymap.set('n', '<leader>pga', '<cmd>PhpActor generate_accessor<CR>', bufopts)
+        vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
     end,
     init_options = {
         ["language_server_phpstan.enabled"] = false,
@@ -106,7 +105,6 @@ lsp.configure('intelephense', {
         licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
     },
 })
-
 
 lsp.configure('rust_analyzer', {
     -- Server-specific settings...
@@ -145,44 +143,18 @@ local luasnip = require 'luasnip'
 
 ---- nvim-cmp setup
 local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+lsp.setup_nvim_cmp({
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
+        ['<C-d>'] = cmp.mapping.scroll_docs(-5),
+        ['<C-u>'] = cmp.mapping.scroll_docs(5),
+        ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    })
+
+})
 
 vim.diagnostic.config({
     virtual_text = true
