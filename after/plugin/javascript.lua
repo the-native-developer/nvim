@@ -31,3 +31,9 @@ vim.g['javascript_conceal_super']                = "Ω"
 vim.g['javascript_conceal_arrow_function']       = "⇒"
 vim.g['javascript_conceal_noarg_arrow_function'] = "λ"
 vim.o.conceallevel                               = 1
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group    = vim.api.nvim_create_augroup('saveVue', {clear=true}),
+    pattern  = {'*.vue'},
+    command = '!prettier -w --parser vue %'
+})
