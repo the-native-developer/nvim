@@ -1,5 +1,3 @@
-
-
 -- reserve space for diagnostic icons
 vim.opt.signcolumn = 'yes'
 
@@ -20,10 +18,11 @@ local servers = {
     'cssmodules_ls',
     'emmet_ls',
     'eslint',
+    'vtsls',
     'vuels',
     'phpactor',
     'intelephense',
-    -- 'psalm',
+    'psalm',
     'graphql',
     'bashls',
     'gopls',
@@ -32,6 +31,8 @@ local servers = {
     'jsonls',
     'yamlls',
     'sumneko_lua',
+    'sqls',
+    'sqlls',
 }
 lsp.ensure_installed(servers)
 
@@ -67,6 +68,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 end
 
+lsp.on_attach(on_attach)
+
 lsp.configure('jsonls',  {
   settings = {
     json = {
@@ -84,32 +87,9 @@ lsp.configure('intelephense', {
 
 lsp.configure('phpactor', {
     on_attach = function(client, bufnr)
-      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      on_attach(client, bufnr)
+
       local bufopts = { silent=true, buffer=bufnr, remap=false }
-
-      -- Mappings.
-      -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
-      vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev, bufopts)
-      vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, bufopts)
-      vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
-
-      -- Mappings.
-      -- See `:help vim.lsp.*` for documentation on any of the below functions
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, bufopts)
-      vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
       vim.keymap.set('n', '<leader>pt', '<cmd>PhpActor transform<CR>', bufopts)
       vim.keymap.set('n', '<leader>pc', '<cmd>PhpActor context_menu<CR>', bufopts)
       vim.keymap.set('n', '<leader>pga', '<cmd>PhpActor generate_accessor<CR>', bufopts)
@@ -121,7 +101,6 @@ lsp.configure('phpactor', {
     }
 })
 
-lsp.on_attach(on_attach)
 lsp.configure('intelephense', {
     init_options = {
         licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
