@@ -10,4 +10,4 @@ vim.o.termguicolors = true
 -- vim.g.neon_transparent = false
 
 vim.cmd.colorscheme('tokyonight-day')
-vim.api.nvim_set_hl(0, 'ColorColumn', {bg='LightBlue'})
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg='DarkCyan', ctermbg='DarkCyan' })

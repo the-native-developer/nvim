@@ -13,4 +13,4 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.wo.colorcolumn='100' -- highlight column after 'textwidth'
+vim.wo.colorcolumn='100'-- highlight column after 'textwidth'                                    
