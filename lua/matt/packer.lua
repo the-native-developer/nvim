@@ -85,13 +85,14 @@ return require('packer').startup(function(use)
             'nvim-telescope/telescope-dap.nvim',
             'go-delve/delve',
             'leoluz/nvim-dap-go',
-            'mfussenegger/nvim-dap-python',
         }
     }
 
     -- rust
     use 'simrat39/rust-tools.nvim'
     use 'rust-lang/rust.vim'
+
+    -- lsp-zero
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -114,17 +115,6 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
-    -- Lua lsp
-    -- use { 'tjdevries/nlua.nvim',
-    --     requires = {'neovim/nvim-lspconfig', 'nvim-lua/completion-nvim', 'euclidianAce/BetterLua.vim'}
-    -- }
-
-    -- -- language server
-    -- use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-    -- use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-    -- use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    -- use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-    -- use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
     -- Web-Dev plugins
     use 'mattn/emmet-vim'
@@ -153,6 +143,8 @@ return require('packer').startup(function(use)
       },
     })
 
+    -- vim be good
+    use 'ThePrimeagen/vim-be-good'
     ----------------------------------------------------------------------------------------------
     -- my plugins
     -- use '/home/mlueer/projects/nvim/plugins/stackmap.nvim'
