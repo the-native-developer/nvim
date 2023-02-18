@@ -21,8 +21,6 @@ dap.adapters.node2 = {
   args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
 }
 
-require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-
 dap.configurations.javascript = {
   {
     name = 'Launch',
