@@ -31,3 +31,6 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', opt)
 
 -- open netrw
 vim.keymap.set('n', '<leader>ex', vim.cmd.Explore, opt)
+
+-- remap brakets to english keyboard style
+vim.o.langmap="ü+Ü*;[]{}"
