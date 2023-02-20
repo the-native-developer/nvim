@@ -23,9 +23,9 @@ vim.keymap.set('v', '<Up>', '<Nop>', opt)
 vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>', opt)
 
 --paste without overwriting clipboard
-vim.keymap.set('n', '<leader>p', '"_dP', opt)
+vim.keymap.set('x', '<leader>p', "\"_dP", opt)
 
--- open terminal below all splits
+-- open terminal above all splits
 vim.keymap.set('n', '<leader>to', '<cmd>sp<CR><cmd>bo term<CR><C-w><S-k>i', opt)
 
 -- remap page up and down to be centered on screen

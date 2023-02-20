@@ -58,6 +58,8 @@ return require('packer').startup(function(use)
 
     use 'mbbill/undotree'
 
+    use "ThePrimeagen/harpoon"
+
     -- fugative
     use 'tpope/vim-fugitive'
 
