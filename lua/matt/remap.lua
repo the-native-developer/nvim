@@ -37,3 +37,13 @@ vim.keymap.set('n', '<leader>ex', vim.cmd.Explore, opt)
 
 -- remap brakets to english keyboard style
 vim.o.langmap="öäÖÄ;[]{}"
+
+-- Alt to AltGr remappings
+vim.keymap.set({'n', 'i'}, '<A-7>', '{', opt)
+vim.keymap.set({'n', 'i'}, '<A-8>', '[', opt)
+vim.keymap.set({'n', 'i'}, '<A-9>', ']', opt)
+vim.keymap.set({'n', 'i'}, '<A-0>', '}', opt)
+vim.keymap.set({'n', 'i'}, '<A-ß>', '\\', opt)
+vim.keymap.set({'n', 'i'}, '<A-+>', '~', opt)
+vim.keymap.set({'n', 'i'}, '<A-m>', 'µ', opt)
+
