@@ -46,3 +46,4 @@ vim.wo.colorcolumn='100'-- highlight column after 'textwidth'
 
 vim.g['python3_host_prog'] = '/bin/python3'
 vim.g['ruby_host_prog'] = '/home/mlueer/.local/share/gem/ruby/3.0.0/bin/neovim-ruby-host'
+vim.g['netrw_bufsettings'] = 'nu rnu'
