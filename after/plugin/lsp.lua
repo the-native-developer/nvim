@@ -21,6 +21,7 @@ local servers = {
     'volar',
     'phpactor',
     'intelephense',
+    'phpstan',
     'psalm',
     'graphql',
     'bashls',
@@ -29,8 +30,6 @@ local servers = {
     'rust_analyzer',
     'jsonls',
     'yamlls',
-    -- 'lua_ls',
-    'sqls',
     'sqlls',
 }
 lsp.ensure_installed(servers)
@@ -94,7 +93,8 @@ lsp.configure('phpactor', {
         vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
     end,
     init_options = {
-        ["language_server_phpstan.enabled"] = false,
+        ["language_server_phpstan.enabled"] = true,
+        ["language_server_phpstan.level"] = 7,
         ["language_server_psalm.enabled"] = true,
     }
 })
@@ -144,7 +144,7 @@ local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 lsp.setup_nvim_cmp({
-  mapping = cmp.mapping.preset.insert({
+    mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-5),
         ['<C-u>'] = cmp.mapping.scroll_docs(5),
         ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),

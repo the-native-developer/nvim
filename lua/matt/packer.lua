@@ -58,8 +58,6 @@ return require('packer').startup(function(use)
 
     use 'mbbill/undotree'
 
-    use "ThePrimeagen/harpoon"
-
     -- fugative
     use 'tpope/vim-fugitive'
 
@@ -130,7 +128,7 @@ return require('packer').startup(function(use)
     use 'jparise/vim-graphql'
 
     -- Go dev plugins
-    use {'fatih/vim-go', run = ':GoUpdateBinaries' }
+    use {'fatih/vim-go', run = ':silent :GoUpdateBinaries' }
 
     -- schemastore json
     use "b0o/schemastore.nvim"
