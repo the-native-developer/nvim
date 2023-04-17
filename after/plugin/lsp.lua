@@ -9,30 +9,29 @@ lsp.preset('recommended')
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
-local servers = {
-    'clangd',
-    'cmake',
-    'tsserver',
-    'html',
-    'cssls',
-    'cssmodules_ls',
-    'emmet_ls',
-    'eslint',
-    'volar',
-    'phpactor',
-    'intelephense',
-    'phpstan',
-    'psalm',
-    'graphql',
-    'bashls',
-    'gopls',
-    'golangci_lint_ls',
-    'rust_analyzer',
-    'jsonls',
-    'yamlls',
-    'sqlls',
-}
-lsp.ensure_installed(servers)
+-- local servers = {
+--     'clangd',
+--     'cmake',
+--     'tsserver',
+--     'html',
+--     'cssls',
+--     'cssmodules_ls',
+--     'emmet_ls',
+--     'eslint',
+--     'volar',
+--     'phpactor',
+--     'intelephense',
+--     'psalm',
+--     'graphql',
+--     'bashls',
+--     'gopls',
+--     'golangci_lint_ls',
+--     'rust_analyzer',
+--     'jsonls',
+--     'yamlls',
+--     'sqlls',
+-- }
+-- lsp.ensure_installed(servers)
 
 ---- Use an on_attach function to only map the following keys
 ---- after the language server attaches to the current buffer
@@ -93,6 +92,7 @@ lsp.configure('phpactor', {
         vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
     end,
     init_options = {
+        ["language_server_phpstan.bin"] = "/home/mlueer/.local/share/nvim/mason/bin/phpstan",
         ["language_server_phpstan.enabled"] = true,
         ["language_server_phpstan.level"] = 7,
         ["language_server_psalm.enabled"] = true,

@@ -2,9 +2,9 @@ if packer_plugins['phpactor.nvim'] then
     print("loaded phpactor")
     require("phpactor").setup({
         install = {
-            path = vim.fn.stdpath("data") .. "/opt/",
+            path = vim.fn.stdpath("data") .. "/mason/",
             branch = "master",
-            bin = vim.fn.stdpath("data") .. "/opt/phpactor/bin/phpactor",
+            bin = vim.fn.stdpath("data") .. "/mason/bin/phpactor",
             php_bin = "php",
             composer_bin = "composer",
             git_bin = "git",
