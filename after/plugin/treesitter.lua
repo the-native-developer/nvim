@@ -32,7 +32,6 @@ require'nvim-treesitter.configs'.setup {
       "proto",
       "regex",
       "toml",
-      "help",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
