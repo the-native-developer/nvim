@@ -92,17 +92,11 @@ lsp.configure('phpactor', {
         vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
     end,
     init_options = {
-        ["language_server_phpstan.bin"] = "/home/mlueer/.local/share/nvim/mason/bin/phpstan",
+        ["language_server_phpstan.bin"] = "phpstan",
         ["language_server_phpstan.enabled"] = true,
         ["language_server_phpstan.level"] = 7,
         ["language_server_psalm.enabled"] = true,
     }
-})
-
-lsp.configure('intelephense', {
-    init_options = {
-        licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
-    },
 })
 
 lsp.configure('rust_analyzer', {

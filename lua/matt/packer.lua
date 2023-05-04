@@ -163,6 +163,23 @@ return require('packer').startup(function(use)
         "nvim-lua/plenary.nvim", -- required to update phpactor
         "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
       },
+      config = function()
+          require("phpactor").setup({
+              install = { 
+                  path = "/home/mlueer/repos",
+                  branch = "master",
+                  bin = "/home/mlueer/repos/phpactor/bin/phpactor",
+                  php_bin = "php",
+                  composer_bin = "composer",
+                  git_bin = "git",
+                  check_on_startup = "always",
+              },
+              lspconfig = {
+                  enabled = true,
+                  options = {},
+              },
+          })
+      end,
     })
 
     -- vim be good
