@@ -14,6 +14,8 @@ telescope.setup {
         grep_previewer = require 'telescope.previewers'.vimgrep.new,
         qflist_previewer = require 'telescope.previewers'.qflist.new,
 
+        dynamic_preview_title = true,
+
         mappings = {
             i = {
                 ["<C-n>"] = actions.cycle_history_next,
@@ -80,6 +82,13 @@ telescope.setup {
         },
     },
     pickers = {
+        find_files = {
+            hidden = true,
+            follow = true,
+        },
+        live_grep = {
+            additional_args = { '-L' }
+        }
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
         --   picker_config_key = value,
