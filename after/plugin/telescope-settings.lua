@@ -1,16 +1,11 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-    return
-end
-
 local actions = require "telescope.actions"
-telescope.setup {
+require('telescope').setup {
     defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
         path_display = { "smart" },
 
-        file_previewer = require 'telescope.previewers'.cat.new,
+        -- file_previewer = require 'telescope.previewers'.cat.new,
         grep_previewer = require 'telescope.previewers'.vimgrep.new,
         qflist_previewer = require 'telescope.previewers'.qflist.new,
 
@@ -129,6 +124,7 @@ telescope.setup {
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("dap")
+require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
 -- Using Lua functions
@@ -140,9 +136,16 @@ vim.keymap.set('n', '<leader>fni', function()
     builtin.find_files({ no_ignore = true })
 end, { noremap = true })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true })
+vim.keymap.set('n', '<leader>ft', builtin.treesitter, { noremap = true })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { noremap = true })
+vim.keymap.set('n', '<leader>fgf', builtin.git_files, { noremap = true })
+vim.keymap.set('n', '<leader>fgb', builtin.git_branches, { noremap = true })
+vim.keymap.set('n', '<leader>fgc', builtin.git_commits, { noremap = true })
+vim.keymap.set('n', '<leader>fgs', builtin.git_stash, { noremap = true })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { noremap = true })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { noremap = true })
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { noremap = true })
 vim.keymap.set('n', '<leader>fhh', builtin.help_tags, { noremap = true })
 vim.keymap.set('n', '<leader>fc', vim.lsp.buf.code_action, { noremap = true })
+vim.keymap.set('n', '<leader>fli', builtin.lsp_implementations, { noremap = true })
+vim.keymap.set('n', '<leader>fld', builtin.lsp_definitions, { noremap = true })

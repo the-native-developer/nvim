@@ -77,6 +77,13 @@ lsp.configure('jsonls', {
 })
 
 lsp.configure('intelephense', {
+    settings = {
+        intelephense = {
+            files = {
+                maxSize = 1000000;
+            },
+        }
+    },
     init_options = {
         licenseKey = os.getenv('INTELEPHENSE_LICENSE_KEY'), -- this is tested and working as intended
     },
@@ -92,10 +99,14 @@ lsp.configure('phpactor', {
         vim.keymap.set('n', '<leader>pcv', '<cmd>PhpActor change_visibility<CR>', bufopts)
     end,
     init_options = {
-        ["language_server_phpstan.bin"] = "phpstan",
-        ["language_server_phpstan.enabled"] = true,
-        ["language_server_phpstan.level"] = 7,
-        ["language_server_psalm.enabled"] = true,
+        -- language_server_phpstan = {
+        --     bin = "phpstan",
+        --     enabled = true,
+        --     level = 7,
+        -- },
+        -- language_server_psalm = {
+        --     enabled = true,
+        -- }
     }
 })
 

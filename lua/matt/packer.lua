@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -17,40 +17,31 @@ return require('packer').startup(function(use)
 
     -- lualine statusline.
     use { 'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    -- harpoon 
-    use { 'ThePrimeagen/harpoon',
-      requires = { 'nvim-lua/plenary.nvim' }
-    }
+    -- -- harpoon
+    -- use { 'ThePrimeagen/harpoon',
+    --   requires = { 'nvim-lua/plenary.nvim' }
+    -- }
 
     use { 'alexghergh/nvim-tmux-navigation', config = function()
+        local nvim_tmux_nav = require('nvim-tmux-navigation')
 
-            local nvim_tmux_nav = require('nvim-tmux-navigation')
+        nvim_tmux_nav.setup {
+            disable_when_zoomed = true -- defaults to false
+        }
 
-            nvim_tmux_nav.setup {
-                disable_when_zoomed = true -- defaults to false
-            }
-
-            vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-            vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-            vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-            vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-            vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-            vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-
-        end
+        vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+        vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+        vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+        vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+        vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+        vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+    end
     }
     -- Color theme plugins
-    use {'dracula/vim', as =  'dracula' }
-    use 'morhetz/gruvbox'
-    use 'altercation/vim-colors-solarized'
-    use 'ayu-theme/ayu-vim'
-    use 'andbar-ru/vim-unicon'
-    use 'rafamadriz/neon'
     use 'folke/tokyonight.nvim'
-    use 'savq/melange'
 
     -- auto pairs
     use 'jiangmiao/auto-pairs'
@@ -71,13 +62,15 @@ return require('packer').startup(function(use)
     }
 
     use {
-      'nvim-telescope/telescope.nvim', branch = '0.1.x',
-      requires = {
-          {'nvim-lua/plenary.nvim'},
-          {'nvim-telescope/telescope-ui-select.nvim' },
-          {'BurntSushi/ripgrep'}
-      }
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
+            { 'BurntSushi/ripgrep' }
+        }
     }
+
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     use 'mbbill/undotree'
 
@@ -85,7 +78,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
 
     -- vim gutter
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
 
     -- vim-suround
     use 'tpope/vim-surround'
@@ -97,9 +90,30 @@ return require('packer').startup(function(use)
     use 'lumiliet/vim-twig'
 
     -- Test suite
-    use 'vim-test/vim-test'
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-plenary",
+            "marilari88/neotest-vitest",
+            "nvim-neotest/neotest-vim-test",
+        },
+        config = function()
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-plenary"),
+                    require("neotest-vitest"),
+                    require("neotest-vim-test")({
+                        ignore_file_types = { "typescript", "javascript", "vue", "lua" },
+                    }),
+                },
+            })
+        end
+    }
 
-    -- debugging 
+    -- debugging
     use {
         'mfussenegger/nvim-dap',
         requires = {
@@ -121,21 +135,21 @@ return require('packer').startup(function(use)
         branch = 'v1.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},         -- Required
-            {'hrsh7th/cmp-nvim-lsp'},     -- Required
-            {'hrsh7th/cmp-buffer'},       -- Optional
-            {'hrsh7th/cmp-path'},         -- Optional
-            {'saadparwaiz1/cmp_luasnip'}, -- Optional
-            {'hrsh7th/cmp-nvim-lua'},     -- Optional
+            { 'hrsh7th/nvim-cmp' },         -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+            { 'hrsh7th/cmp-buffer' },       -- Optional
+            { 'hrsh7th/cmp-path' },         -- Optional
+            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
             -- Snippets
-            {'L3MON4D3/LuaSnip'},             -- Required
-            {'rafamadriz/friendly-snippets'}, -- Optional
+            { 'L3MON4D3/LuaSnip' },             -- Required
+            { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
 
@@ -151,37 +165,37 @@ return require('packer').startup(function(use)
     use 'jparise/vim-graphql'
 
     -- Go dev plugins
-    use {'fatih/vim-go', run = ':silent :GoUpdateBinaries' }
+    use { 'fatih/vim-go', run = ':silent :GoUpdateBinaries' }
 
     -- schemastore json
     use "b0o/schemastore.nvim"
 
     -- Phpactor
-    use ({
-      "gbprod/phpactor.nvim",
-      run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-      requires = {
-        "nvim-lua/plenary.nvim", -- required to update phpactor
-        "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
-      },
-      config = function()
-          require("phpactor").setup({
-              install = { 
-                  path = "/home/mlueer/repos",
-                  branch = "master",
-                  bin = "/home/mlueer/repos/phpactor/bin/phpactor",
-                  php_bin = "php",
-                  composer_bin = "composer",
-                  git_bin = "git",
-                  check_on_startup = "always",
-              },
-              lspconfig = {
-                  enabled = true,
-                  options = {},
-              },
-          })
-      end,
-    })
+    -- use ({
+    --   "gbprod/phpactor.nvim",
+    --   -- run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
+    --   requires = {
+    --     "nvim-lua/plenary.nvim", -- required to update phpactor
+    --     "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
+    --   },
+    --   config = function()
+    --       require("phpactor").setup({
+    --           install = {
+    --               path = "/home/mlueer/repos",
+    --               branch = "master",
+    --               bin = "/home/mlueer/repos/phpactor/bin/phpactor",
+    --               php_bin = "php",
+    --               composer_bin = "composer",
+    --               git_bin = "git",
+    --               check_on_startup = "always",
+    --           },
+    --           lspconfig = {
+    --               enabled = true,
+    --               options = {},
+    --           },
+    --       })
+    --   end,
+    -- })
 
     -- vim be good
     use 'ThePrimeagen/vim-be-good'
@@ -193,4 +207,4 @@ return require('packer').startup(function(use)
     if packer_bootstrap then
         require('packer').sync()
     end
-  end)
+end)

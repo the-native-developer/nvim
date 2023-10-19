@@ -3,13 +3,14 @@
 " autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " FORMATTERS
-au FileType javascript setlocal formatprg=prettier
-au FileType javascript.jsx setlocal formatprg=prettier
-au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-au FileType vue setlocal formatprg=prettier\ --parser\ vue
+" au FileType javascript setlocal formatprg=prettier
+" au FileType javascript.jsx setlocal formatprg=prettier
+" au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+" au FileType vue setlocal formatprg=prettier\ --parser\ vue
 au FileType scss setlocal formatprg=prettier\ --parser\ css
 au FileType css setlocal formatprg=prettier\ --parser\ css
 au FileType html setlocal formatprg=js-beautify\ --type\ html
+au BufWritePre *.tsx,*.ts,*.jsx,*.js,*.vue EslintFixAll
 
 " TREESITTER
 set foldmethod=expr
@@ -26,10 +27,10 @@ let g:vim_vue_plugin_config = {
       \   'route': 'json',
       \},
       \'full_syntax': ['json'],
-      \'initial_indent': ['i18n', 'i18n.json', 'yaml'],
+      \'initial_indent': ['i18n', 'i18n.json', 'yaml', 'vue'],
       \'attribute': 1,
       \'keyword': 1,
-      \'foldexpr': 1,
+      \'foldexpr': 0,
       \'debug': 0,
       \}
 

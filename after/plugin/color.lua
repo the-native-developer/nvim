@@ -9,5 +9,7 @@ vim.o.termguicolors = true
 -- vim.g.neon_italic_function = true
 -- vim.g.neon_transparent = false
 
-vim.cmd.colorscheme('tokyonight-day')
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg='DarkCyan', ctermbg='DarkCyan' })
+vim.cmd.colorscheme('tokyonight')
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg=10040012, ctermbg=10040012 })
+vim.api.nvim_set_hl(0, 'Normal', { bg=nil, ctermbg=nil })
+vim.api.nvim_set_hl(0, 'NormalNC', { bg=nil, ctermbg=nil })
