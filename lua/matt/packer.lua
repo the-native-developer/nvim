@@ -20,28 +20,37 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    -- -- harpoon
-    -- use { 'ThePrimeagen/harpoon',
-    --   requires = { 'nvim-lua/plenary.nvim' }
-    -- }
+    use {
+        'alexghergh/nvim-tmux-navigation',
+        config = function()
+            local nvim_tmux_nav = require('nvim-tmux-navigation')
 
-    use { 'alexghergh/nvim-tmux-navigation', config = function()
-        local nvim_tmux_nav = require('nvim-tmux-navigation')
+            nvim_tmux_nav.setup {
+                disable_when_zoomed = true -- defaults to false
+            }
 
-        nvim_tmux_nav.setup {
-            disable_when_zoomed = true -- defaults to false
-        }
-
-        vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-        vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-        vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-        vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-        vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-        vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-    end
+            vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+            vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+            vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+            vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+            vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+            vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+        end
     }
-    -- Color theme plugins
-    use 'folke/tokyonight.nvim'
+
+    -- tokyonight theme
+    use {
+        'folke/tokyonight.nvim',
+        config = function ()
+            vim.opt.syntax = 'on'
+            vim.o.termguicolors = true
+
+            vim.cmd.colorscheme('tokyonight-moon')
+            vim.api.nvim_set_hl(0, 'ColorColumn', { bg=10040012, ctermbg=10040012 })
+            vim.api.nvim_set_hl(0, 'Normal', { bg=nil, ctermbg=nil })
+            vim.api.nvim_set_hl(0, 'NormalNC', { bg=nil, ctermbg=nil })
+        end
+    }
 
     -- auto pairs
     use 'jiangmiao/auto-pairs'
@@ -83,12 +92,6 @@ return require('packer').startup(function(use)
     -- vim-suround
     use 'tpope/vim-surround'
 
-    -- html 5
-    use 'othree/html5.vim'
-
-    -- twig vim
-    use 'lumiliet/vim-twig'
-
     -- Test suite
     use {
         "nvim-neotest/neotest",
@@ -122,14 +125,8 @@ return require('packer').startup(function(use)
             'rcarriga/nvim-dap-ui',
             'theHamsta/nvim-dap-virtual-text',
             'nvim-telescope/telescope-dap.nvim',
-            'go-delve/delve',
-            'leoluz/nvim-dap-go',
         }
     }
-
-    -- rust
-    use 'simrat39/rust-tools.nvim'
-    use 'rust-lang/rust.vim'
 
     -- lsp-zero
     use {
@@ -155,52 +152,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- Web-Dev plugins
-    use 'mattn/emmet-vim'
-
-    use 'pangloss/vim-javascript'
-    use 'leafgarland/typescript-vim'
-    use 'leafoftree/vim-vue-plugin'
-    use 'peitalin/vim-jsx-typescript'
-    use { 'styled-components/vim-styled-components', branch = 'main' }
-
-    use 'jparise/vim-graphql'
-
-    -- Go dev plugins
-    use { 'fatih/vim-go', run = ':silent :GoUpdateBinaries' }
-
-    -- schemastore json
-    use "b0o/schemastore.nvim"
-
-    -- Phpactor
-    -- use ({
-    --   "gbprod/phpactor.nvim",
-    --   -- run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-    --   requires = {
-    --     "nvim-lua/plenary.nvim", -- required to update phpactor
-    --     "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
-    --   },
-    --   config = function()
-    --       require("phpactor").setup({
-    --           install = {
-    --               path = "/home/mlueer/repos",
-    --               branch = "master",
-    --               bin = "/home/mlueer/repos/phpactor/bin/phpactor",
-    --               php_bin = "php",
-    --               composer_bin = "composer",
-    --               git_bin = "git",
-    --               check_on_startup = "always",
-    --           },
-    --           lspconfig = {
-    --               enabled = true,
-    --               options = {},
-    --           },
-    --       })
-    --   end,
-    -- })
-
-    -- vim be good
-    use 'ThePrimeagen/vim-be-good'
     ----------------------------------------------------------------------------------------------
     -- my plugins
     -- use '/home/mlueer/projects/nvim/plugins/stackmap.nvim'
