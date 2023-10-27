@@ -99,10 +99,12 @@ return require('packer').startup(function(use)
             "nvim-neotest/neotest-plenary",
             "marilari88/neotest-vitest",
             "nvim-neotest/neotest-vim-test",
+            "olimorris/neotest-phpunit",
         },
         config = function()
             require("neotest").setup({
                 adapters = {
+                    require("neotest-phpunit"),
                     require("neotest-plenary"),
                     require("neotest-vitest"),
                     require("neotest-vim-test")({

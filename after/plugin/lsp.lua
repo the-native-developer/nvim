@@ -80,7 +80,7 @@ lsp.configure('intelephense', {
     settings = {
         intelephense = {
             files = {
-                maxSize = 1000000;
+                maxSize = 10000000;
             },
         }
     },
